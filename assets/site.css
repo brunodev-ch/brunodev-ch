@@ -72,3 +72,32 @@ footer { max-width: 720px; margin: 0 auto; padding: 0 16px 40px; color: var(--in
   td:first-child { font-weight: 600; }
   td:last-child { color: var(--ink-soft); }
 }
+
+/* App grid on the home page, laid out like a phone home screen. */
+.home {
+  list-style: none; padding: 0; margin: 32px 0 40px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 28px 12px;
+}
+.home a {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center; text-decoration: none; color: var(--ink);
+  border-radius: 20px; padding: 6px 2px; outline-offset: 4px;
+}
+.home img {
+  width: 72px; height: 72px; border-radius: 18px;
+  /* hairline ring keeps dark icons visible on the dark background */
+  box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgb(0 0 0 / 0.12), 0 6px 16px rgb(0 0 0 / 0.10);
+  transition: transform 0.15s ease;
+}
+.home a:hover img, .home a:focus-visible img { transform: translateY(-2px) scale(1.04); }
+.home a:active img { transform: scale(0.96); }
+.home .name { font-weight: 600; font-size: 0.95rem; line-height: 1.25; }
+.home .tag {
+  font-size: 0.8rem; line-height: 1.35; color: var(--ink-soft);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+@media (min-width: 600px) {
+  .home { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 36px 16px; }
+  .home img { width: 84px; height: 84px; border-radius: 21px; }
+}
+@media (prefers-reduced-motion: reduce) { .home img { transition: none; } }
